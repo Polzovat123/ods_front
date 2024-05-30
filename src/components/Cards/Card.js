@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card } from 'antd';
+import { Card as AntCard} from 'antd';
 
 const Card = ({ params }) => {
     const props = Object.entries(params).map(([key, value]) => {
@@ -11,9 +11,9 @@ const Card = ({ params }) => {
         )
     })
     return (
-        <Card title="Card title" bordered={false} style={{ width: 300 }}>
+        <AntCard title="Card title" bordered={false} style={{ width: 300 }}>
             {props}
-        </Card>
+        </AntCard>
     )
 };
 
