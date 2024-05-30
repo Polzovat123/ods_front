@@ -26,7 +26,7 @@ export const AuthLayout = () => {
             <Route path="/main" element={
                 <MainLayout isLoggedIn={isLoggedIn}/>
             }>
-                <Route path="/main/drones" element={<Drones/>}/>
+                <Route index element={<Drones/>}/>
                 <Route path='/main/swarm' element={<SwarmPage />}/>
                 <Route path='/main/missions' element={<p>missions</p>}/>
                 <Route path='/main/tracker' element={<p>tracker</p>}/>
