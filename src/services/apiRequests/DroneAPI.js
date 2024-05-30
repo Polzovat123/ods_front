@@ -4,19 +4,22 @@ const baseApi = axios.create({
     baseURL: `${process.env.REACT_APP_API_URL}/drone/`,
 });
 
-export const all_drones = async (drone) => {
-    return baseApi.get(`all_drones`, drone);
+//GET
+export const getAllDrones = async () => {
+    return baseApi.get(`all_drones`);
 };
 
-export const add_drones = async (drone) => {
-    return baseApi.get(`add_drones`, drone);
+export const getAddDrones = async () => {
+    return baseApi.get(`add_drones`);
 };
 
-export const info = async (drone) => {
+//POST
+export const setDronInfo = async (drone) => {
     return baseApi.post(`info`, drone);
 };
 
-export const exclude_drone = async (drone) => {
+//DELETE
+export const excludeDrone = async (drone) => {
     return baseApi.delete(`exclude_drone/${drone}`);
 };
 

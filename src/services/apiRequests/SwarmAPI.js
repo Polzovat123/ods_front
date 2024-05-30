@@ -5,20 +5,20 @@ const baseApi = axios.create({
 });
 
 //GET
-export const info = async (swarm) => {
-    return baseApi.get(`info`, swarm);
+export const info = async () => {
+    return baseApi.get(`info`);
 };
 
-export const get_task = async (swarm) => {
-    return baseApi.get(`get_task`, swarm);
+export const get_task = async () => {
+    return baseApi.get(`get_task`);
 };
 
-export const swarms = async (swarm) => {
-    return baseApi.get(`swarms`, swarm);
+export const swarms = async () => {
+    return baseApi.get(`swarms`);
 };
 
-export const get_config = async (swarm) => {
-    return baseApi.get(`get_config`, swarm);
+export const get_config = async () => {
+    return baseApi.get(`get_config`);
 };
 
 //POST
