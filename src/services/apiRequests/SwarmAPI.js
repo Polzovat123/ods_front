@@ -35,6 +35,10 @@ export const addDroneToSwarm = async (swarm) => {
 };
 
 //DELETE
+export const deleteSwarm = (id) => {
+    return baseApi.delete(`remove_swarm/${id}`);
+}
+
 export const removeDrone = async (swarm_id, drone_id) => {
     return baseApi.post(`remove_drone`,{swarm_id, drone_id});
 };
