@@ -1,6 +1,15 @@
 .wrapper {
-    display: flex;
-    gap: 10px;
     width: 100%;
-    overflow-x: scroll;
+
+    &__list {
+        display: flex;
+        gap: 10px;
+        overflow-x: scroll;
+    }
+
+    &__add {
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+    }
 }
