@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import { register } from '../../services/apiRequests/AuthAPI'
+
 import classes from "./Registration.module.css";
 
 import DefaultInput from "../../components/textInputs/defailtValue/DefaultInput";
@@ -9,7 +11,7 @@ import DefaultInput from "../../components/textInputs/defailtValue/DefaultInput"
 const Registration = () => {
     const navigate = useNavigate();
     const [user, setUser] = useState({
-        login: "",
+        username: "",
         email: "",
         password: "",
         password_confirmation: "",
@@ -25,6 +27,20 @@ const Registration = () => {
     const submit = (e) => {
         e.preventDefault();
         setErrors("");
+        (async ()=>{
+            register(user)
+            .then((response) => {
+                console.log(response);
+                navigate("/login");
+            })
+            .catch((error) => {
+                console.log('error ', error.data);
+            });
+        }
+        )();
+        
+
+
     }
 
     return (
@@ -34,9 +50,9 @@ const Registration = () => {
         <DefaultInput
           placeholder="Логин"
           onChange={(e) => {
-            changeField("login", e.target.value);
+            changeField("username", e.target.value);
           }}
-          value={user.login}
+          value={user.username}
           type="text"
         ></DefaultInput>
         <DefaultInput
