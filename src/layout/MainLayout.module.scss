@@ -1,0 +1,7 @@
+.wrapper {
+    width: calc(100vw - 10px);
+    display: grid;
+    grid-template: 100% / 30% 70%;
+
+    gap: 10px;
+}

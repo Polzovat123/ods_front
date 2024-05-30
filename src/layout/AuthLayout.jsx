@@ -1,17 +1,20 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import Login from "../pages/login/Login";
 import Registration from "../pages/registration/Registration";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
 
 export const AuthLayout = () => {
     const navigate = useNavigate()
-    const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [isLoggedIn, setIsLoggedIn] = useState(true);
 
     const authenticate = () => {
         setIsLoggedIn(true);
-        navigate('/main')
     }
+
+    useEffect(() => {
+        if (isLoggedIn) navigate('/main')
+    }, [isLoggedIn])
 
     return (
         <Routes>
@@ -23,7 +26,11 @@ export const AuthLayout = () => {
             }>
                 <Route index element={<p>drones</p>}/>
                 <Route path='/main/swarm' element={<p>swarm</p>}/>
+                <Route path='/main/missions' element={<p>missions</p>}/>
+                <Route path='/main/tracker' element={<p>tracker</p>}/>
             </Route>
+
+            <Route path="*" element={<Navigate to='/login'/>}/>
         </Routes>
     )
 }
