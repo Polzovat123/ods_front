@@ -1,7 +1,7 @@
 import React from 'react';
-import { Card as AntCard} from 'antd';
+import { Card as AntCard, Button} from 'antd';
 
-const Card = ({ params }) => {
+const Card = ({ params, onDelete }) => {
     const props = Object.entries(params).map(([key, value]) => {
         return (
             <div key={key}>
@@ -13,6 +13,9 @@ const Card = ({ params }) => {
     return (
         <AntCard title="Card title" bordered={false} style={{ width: 300 }}>
             {props}
+            <Button onClick={onDelete} danger>
+                Delete
+            </Button>
         </AntCard>
     )
 };
