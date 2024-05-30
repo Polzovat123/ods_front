@@ -4,6 +4,7 @@ import Registration from "../pages/registration/Registration";
 import Drones from "../pages/drones/Drones";
 import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
+import { SwarmPage } from "../pages/SwarmPage/SwarmPage";
 
 export const AuthLayout = () => {
     const navigate = useNavigate()
@@ -26,7 +27,7 @@ export const AuthLayout = () => {
                 <MainLayout isLoggedIn={isLoggedIn}/>
             }>
                 <Route path="/main/drones" element={<Drones/>}/>
-                <Route path='/main/swarm' element={<p>swarm</p>}/>
+                <Route path='/main/swarm' element={<SwarmPage />}/>
                 <Route path='/main/missions' element={<p>missions</p>}/>
                 <Route path='/main/tracker' element={<p>tracker</p>}/>
             </Route>
