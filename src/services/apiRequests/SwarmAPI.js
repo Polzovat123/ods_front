@@ -23,7 +23,7 @@ export const getSwarmConfig = async (swarm) => {
 
 //POST
 export const createSwarm = async (swarm) => {
-    return baseApi.post(`create`, swarm);
+    return baseApi.post(`create`, swarm).then(res => res.data);
 };
 
 export const updateSwarm = async (swarm) => {
