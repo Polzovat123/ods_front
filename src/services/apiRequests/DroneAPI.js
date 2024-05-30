@@ -14,9 +14,10 @@ export const setDronInfo = async () => {
 };
 
 //POST
-export const createDrone = async (drone) => {
-    return baseApi.post(`add_drone`, drone).then(res => res.data);
+export const createDrone = (drone) => {
+    return baseApi.post(`add_drone`, drone).then(res => res.data)
 };
+
 
 //DELETE
 export const excludeDrone = async (drone) => {
