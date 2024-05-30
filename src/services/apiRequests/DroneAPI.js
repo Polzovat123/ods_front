@@ -17,6 +17,6 @@ export const info = async (drone) => {
 };
 
 export const exclude_drone = async (drone) => {
-    return baseApi.delete(`exclude_drone/${drone_id}`);
+    return baseApi.delete(`exclude_drone/${drone}`);
 };
 
