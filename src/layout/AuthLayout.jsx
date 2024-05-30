@@ -1,6 +1,7 @@
 import { useState } from "react"
 import Login from "../pages/login/Login";
 import Registration from "../pages/registration/Registration";
+import Drones from "../pages/drones/Drones";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
 
@@ -21,7 +22,7 @@ export const AuthLayout = () => {
             <Route path="/main" element={
                 <MainLayout isLoggedIn={isLoggedIn}/>
             }>
-                <Route index element={<p>drones</p>}/>
+                <Route path="/main/drones" element={<Drones/>}/>
                 <Route path='/main/swarm' element={<p>swarm</p>}/>
             </Route>
         </Routes>
