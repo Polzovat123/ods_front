@@ -4,7 +4,7 @@ import { Card as AntCard} from 'antd';
 const Card = ({ params }) => {
     const props = Object.entries(params).map(([key, value]) => {
         return (
-            <div>
+            <div key={key}>
                 <p>{key}:</p>
                 <p>{value}</p>
             </div>

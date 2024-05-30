@@ -6,16 +6,16 @@ const baseApi = axios.create({
 
 //GET
 export const getAllDrones = async () => {
-    return baseApi.get(`all_drones`);
+    return baseApi.get(`all_drones`).then(res => res.data);
 };
 
-export const getAddDrones = async () => {
-    return baseApi.get(`add_drones`);
+export const setDronInfo = async () => {
+    return baseApi.get(`info`);
 };
 
 //POST
-export const setDronInfo = async (drone) => {
-    return baseApi.post(`info`, drone);
+export const addDrones = async (drone) => {
+    return baseApi.post(`add_drones`, drone);
 };
 
 //DELETE

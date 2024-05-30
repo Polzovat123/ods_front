@@ -1,18 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate } from 'react-router-dom';
 
-import {getAllDrones} from '../../services/apiRequests/DroneAPI';
+import { getAllDrones, addDrones } from '../../services/apiRequests/DroneAPI';
 
-// import { login } from '../../services/apiRequests/AuthAPI'
+import Card from "../../components/Cards/Card";
+import styles from "./Drones.module.scss";
 
-import classes from "./Drones.module.css";
-
-import DefaultInput from "../../components/textInputs/defailtValue/DefaultInput";
 const Drones = ({ authenticate }) => {
     const [drones, setDrones] = useState([]);
-    
-    
+
+
     useEffect(() => {
         getAllDrones()
             .then(dronesList => {
@@ -21,12 +18,34 @@ const Drones = ({ authenticate }) => {
             .catch(console.error)
     }, []);
 
-    console.log(drones);
-
+    (async () => {
+        addDrones()
+        .then(
+            (response) => {
+                console.log(response);
+            }
+        )
+        .catch(
+            (error) => {
+                console.log(error);
+            }
+        )
+    })();
+    
     return (
-        <p>
-            ТЕКСТ
-        </p>
+        <>
+            <div className={styles.wrapper}>
+                {
+                    drones.map(drone => <Card key={drone.id} params={drone} />)
+                }
+            </div>
+            <Button
+                className={styles.btnAdd}
+                type="submit"
+            >
+                Добавить
+            </Button>
+        </>
     );
 }
 
