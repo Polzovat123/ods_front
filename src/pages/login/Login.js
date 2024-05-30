@@ -6,7 +6,7 @@ import classes from "./Login.module.css";
 
 import DefaultInput from "../../components/textInputs/defailtValue/DefaultInput";
 
-const Login = () => {
+const Login = ({ authenticate }) => {
     const navigate = useNavigate();
     const [model, setUser] = useState({
         email: "",
@@ -24,6 +24,7 @@ const Login = () => {
     const submit = (e) => {
         e.preventDefault();
         setErrors("");
+        authenticate();
     }
 
     return (

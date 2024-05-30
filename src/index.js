@@ -5,18 +5,12 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import './index.css';
 
-import Login from './pages/login/Login';
-import Registration from './pages/registration/Registration';
+import { AuthLayout } from './layout/AuthLayout';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <BrowserRouter>
-    <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/registration" element={<Registration />} />
-
-      <Route path="*" element={<Login />} />
-    </Routes>
+    <AuthLayout />
   </BrowserRouter>
 );
