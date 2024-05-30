@@ -1,0 +1,63 @@
+/* Login.module.css */
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background-color: #f0f0f0; /* Light background for the theme */
+}
+
+.blockInformation {
+  width: 90%; /* Adjust width as needed */
+  max-width: 400px; /* Maximum width */
+  padding: 20px;
+  background-color: #ffffff; /* White background for the block */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 8px; /* Rounded corners */
+  text-align: center;
+}
+
+.loginTitle {
+  margin-bottom: 20px;
+  color: #333; /* Dark gray color for contrast */
+}
+
+.btnRegistration {
+  width: 100%; /* Full width button */
+  padding: 10px 0; /* Padding for aesthetics */
+  background-color: #007bff; /* Bootstrap primary color */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btnRegistration:disabled {
+  background-color: #cccccc; /* Greyed out button when disabled */
+}
+
+.btnRegistration:not(:disabled):hover {
+  background-color: #0056b3; /* Darken the button on hover */
+}
+
+.infAboutError {
+  color: red; /* Red color for error messages */
+  margin: 10px 0;
+}
+
+.footerRegistration {
+  margin-top: 20px;
+  color: #666; /* Lighter text for less emphasis */
+}
+
+.loginLink {
+  color: #007bff; /* Link color matching the button */
+  cursor: pointer;
+  margin-left: 5px;
+}
+
+.registerLink:hover {
+  text-decoration: underline; /* Underline on hover for better visibility */
+}
