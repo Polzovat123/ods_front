@@ -2,28 +2,47 @@ import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import { login } from '../../services/apiRequests/AuthAPI'
+
 import classes from "./Login.module.css";
 
 import DefaultInput from "../../components/textInputs/defailtValue/DefaultInput";
 
-const Login = () => {
+const Login = ({ authenticate }) => {
     const navigate = useNavigate();
-    const [model, setUser] = useState({
-        email: "",
+    const [user, setUser] = useState({
+        username: "",
         password: "",
     });
+
 
     const [errors, setErrors] = useState();
     const [isLoading, setLoading] = useState(false);
 
 
     const changeField = (field, value) => {
-        setUser({ ...model, [field]: value });
+        setUser({ ...user, [field]: value });
     };
+
 
     const submit = (e) => {
         e.preventDefault();
         setErrors("");
+
+        setLoading(true);
+        (async () => {
+            login(user)
+                .then((response) => {
+                    console.log(response);
+                    
+                    authenticate();
+                })
+                .catch((error) => {
+                    console.log('error ', error);
+                });
+        })();
+        setLoading(false);
+
     }
 
     return (
@@ -34,16 +53,16 @@ const Login = () => {
                     <DefaultInput
                         placeholder="Логин"
                         onChange={(e) => {
-                            changeField("email", e.target.value);
+                            changeField("username", e.target.value);
                         }}
-                        value={model.email}
+                        value={user.username}
                     ></DefaultInput>
                     <DefaultInput
                         placeholder="Пароль"
                         onChange={(e) => {
                             changeField("password", e.target.value);
                         }}
-                        value={model.password}
+                        value={user.password}
                         type="password"
                     ></DefaultInput>
                     <div className={classes.infAboutError}>{errors}</div>

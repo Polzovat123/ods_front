@@ -1,0 +1,22 @@
+.mission {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 8px;
+
+
+    &__buttons {
+        width: 100%;
+        display: grid;
+
+        gap: 10px;   
+
+        button {
+            flex-shrink: 0;
+        }
+    
+    }
+
+
+}
+

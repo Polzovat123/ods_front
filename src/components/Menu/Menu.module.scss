@@ -1,0 +1,16 @@
+.wrapper {
+    background-color: #383641;
+    width: 20%;
+    height: 100vh;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    border-right: solid;
+    grid-area: solidbar;
+
+    &__button {
+        width: 100%;
+    }
+}

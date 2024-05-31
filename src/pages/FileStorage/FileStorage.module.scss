@@ -1,0 +1,15 @@
+.fileStorage {
+    padding: 20px;
+    grid-area: main;
+    .header {
+        display: flex;
+        justify-content: flex-end;
+        margin-bottom: 20px;
+    }
+
+    .fileGrid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
+}
