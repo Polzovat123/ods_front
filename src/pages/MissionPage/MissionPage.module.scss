@@ -1,10 +1,14 @@
 .wrapper {
     padding: 20px;
-
+    grid-area: main;
+    width: 100%;
     &__list {
+
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
         gap: 16px;
+        overflow-y: auto;
+        padding: 10px;
     }
 
     &__add {
@@ -12,72 +16,4 @@
         display: flex;
         justify-content: flex-end;
     }
-}
-
-.missions-container {
-    display: flex;
-    flex-direction: row;
-    overflow-x: auto;
-    gap: 16px;
-    padding: 16px;
-    position: relative; /* To position the create button */
-}
-
-.mission-card {
-    min-width: 300px;
-    flex-shrink: 0;
-}
-
-.mission-button {
-    display: block;
-    margin: 8px 0;
-}
-
-.create-mission-button {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-}
-
-.mission-button {
-    background-color: green; /* Зеленый цвет кнопки */
-    color: white; /* Белый цвет текста */
-    border: none; /* Без рамки */
-    padding: 10px 20px; /* Отступы */
-    text-align: center; /* Выравнивание текста */
-    text-decoration: none; /* Без подчеркивания текста */
-    display: inline-block; /* Инлайн-блок */
-    font-size: 16px; /* Размер шрифта */
-    margin: 4px 2px; /* Отступы вокруг кнопки */
-    cursor: pointer; /* Курсор указателя при наведении */
-    border-radius: 4px; /* Сглаженные углы */
-    transition: background-color 0.3s ease; /* Плавный переход цвета */
-}
-
-.mission-button:active {
-    background-color: gray; /* Серый цвет при нажатии */
-}
-
-.mission {
-    border: 1px solid #ddd;
-    padding: 16px;
-    margin: 8px;
-    border-radius: 8px;
-}
-
-.mission__status-setup {
-    background-color: #e0ffe0; // light green for setup
-}
-
-.mission__status-waiting {
-    background-color: #fff4e0; // light yellow for waiting
-}
-
-.mission__status-on-mission {
-    background-color: #ffe0e0; // light red for on mission
-}
-
-.mission__buttons {
-    margin-top: 8px;
 }

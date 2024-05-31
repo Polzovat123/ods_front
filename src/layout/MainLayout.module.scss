@@ -1,13 +1,17 @@
 .wrapper {
     width: calc(100vw - 10px);
+    min-height: 100vh;
     display: grid;
-    grid-template: 100% / 30% 70%;
-
+    grid-template-columns: [solidbar] 20%  [main]80%;
+    grid-template-areas:
+    'solidbar main';
     gap: 10px;
+
 
     &__button {
         width: 100%;
         margin-bottom: 10px;
+        padding: 0px;
         font-size: 16px;
         text-align: center;
         background-color: #1890ff;

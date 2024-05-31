@@ -1,6 +1,6 @@
 .fileStorage {
     padding: 20px;
-
+    grid-area: main;
     .header {
         display: flex;
         justify-content: flex-end;
@@ -13,18 +13,3 @@
         gap: 16px;
     }
 }
-// .wrapper {
-//     width: 100%;
-
-//     &__list {
-//         display: flex;
-//         gap: 10px;
-//         overflow-x: scroll;
-//     }
-
-//     &__add {
-//         position: fixed;
-//         bottom: 20px;
-//         right: 20px;
-//     }
-// }

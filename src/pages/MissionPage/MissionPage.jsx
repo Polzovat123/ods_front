@@ -102,7 +102,7 @@ export const MissionPage = () => {
                     />
                 ))}
             </div>
-            <Button
+            <Button 
                 className={styles.wrapper__add}
                 type="primary"
                 onClick={() => setIsCreateModalOpen(true)}

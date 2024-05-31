@@ -48,16 +48,20 @@ const CardMission = ({ params, onFind, onStart, onFileChange }) => {
             <p>id_swarm_uses: {params.id_swarm_uses}</p>
             <p>targets: {params.targets}</p>
             <p>status: {params.status}</p>
-            <Upload beforeUpload={beforeUpload} disabled={params.status !== 'настройка'}>
-                <Button type="primary" disabled={params.status !== 'настройка' || isFileSelected}>Select File</Button>
-            </Upload>
+
             <div className={styles.mission__buttons}>
+                <Upload beforeUpload={beforeUpload} disabled={params.status !== 'настройка'}>
+                    <Button  type="primary" disabled={params.status !== 'настройка' || isFileSelected}>Select File</Button>
+                </Upload>
+
                 <Button type="primary" onClick={handlePathFind} disabled={params.status !== 'настройка' || isPathComputed}>
                     Path Compute
                 </Button>
+
                 <Button type="primary" onClick={handleStartMission} disabled={params.status !== 'ожидание' || isMissionStarted}>
                     Start Mission
                 </Button>
+                <p></p>
             </div>
         </div>
     );
