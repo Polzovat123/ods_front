@@ -47,6 +47,7 @@ export const MissionPage = () => {
                 setIsCreateModalOpen(false);
             })
             .catch(console.error);
+        fetchMissions();
     };
 
     const handlePathFind = (missionId) => {
