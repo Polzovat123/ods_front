@@ -6,6 +6,7 @@ import { Navigate, Route, Routes, useNavigate } from "react-router-dom";
 import { MainLayout } from "./MainLayout";
 import { SwarmPage } from "../pages/SwarmPage/SwarmPage";
 import { FileStorage } from "../pages/FileStorage/FileStorage";
+import { MissionPage} from "../pages/MissionPage/MissionPage"
 
 export const AuthLayout = () => {
     const navigate = useNavigate()
@@ -29,7 +30,7 @@ export const AuthLayout = () => {
             }>
                 <Route index element={<Drones/>}/>
                 <Route path='/main/swarm' element={<SwarmPage />}/>
-                <Route path='/main/missions' element={<p>missions</p>}/>
+                <Route path='/main/missions' element={<MissionPage />}/>
                 <Route path='/main/tracker' element={<p>tracker</p>}/>
                 <Route path='/main/file_storage' element={<FileStorage />}/>
             </Route>
