@@ -25,6 +25,11 @@ export const Menu = () => {
                         Tracker
                     </Button>
                 </Link>
+                <Link to='/main/file_storage'>
+                    <Button type="primary" className={styles.wrapper__button}>
+                        FileStorage
+                    </Button>
+                </Link>
             </div>
     )
 }
