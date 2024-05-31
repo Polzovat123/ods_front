@@ -6,7 +6,7 @@ const baseApi = axios.create({
 
 // GET
 export const trackAllMissions = async () => {
-    return baseApi.get(`show_all`).then(res => res.data);
+    return baseApi.get(`show_swarms_on_missions`).then(res => res.data);
 };
 
 export const getPercentComplete = async (mission_id) => {
