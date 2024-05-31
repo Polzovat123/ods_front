@@ -44,12 +44,9 @@ export const FileStorage = () => {
 
     return (
         <div className={styles.fileStorage}>
-            <div className={styles.header}>
-                <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
-                    Add File
-                </Button>
-            </div>
-            <div className={styles.fileGrid}>
+
+
+            <div className={styles.fileStorage__list}>
                 {files.map((file) => (
                     <Card
                         key={file}
@@ -62,6 +59,10 @@ export const FileStorage = () => {
                     </Card>
                 ))}
             </div>
+
+            <Button className = {styles.fileStorage__add} type="primary" icon={<PlusOutlined />} onClick={() => setIsModalOpen(true)}>
+                Add File
+            </Button>
 
             <Modal
                 title="Upload Firmware"

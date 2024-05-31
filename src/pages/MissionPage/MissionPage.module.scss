@@ -12,8 +12,8 @@
     }
 
     &__add {
-        margin-top: 20px;
-        display: flex;
-        justify-content: flex-end;
+        position: fixed;
+        bottom: 20px;
+        right: 20px; 
     }
 }

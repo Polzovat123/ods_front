@@ -54,21 +54,21 @@ export const SwarmPage = () => {
                     <Card key={swarm.id} params={swarm} onDelete={() => handleDelete(swarm.id)} />
                 ))}
             </div>
-            <Button
-                className={styles.wrapper__add}
-                type="primary"
-                onClick={() => setIsCreateModalOpen(true)}
-            >
-                Add Swarm
-            </Button>
-            <Button
-                className={styles.wrapper__add}
-                type="primary"
-                onClick={() => setIsAddDroneModalOpen(true)}
-            >
-                Add Drone to Swarm
-            </Button>
+            <div className={styles.wrapper__add}>
+                <Button
+                    type="primary"
+                    onClick={() => setIsAddDroneModalOpen(true)}
+                >
+                    Add Drone to Swarm
+                </Button>
+                <Button
+                    type="primary"
+                    onClick={() => setIsCreateModalOpen(true)}
+                >
+                    Add Swarm
+                </Button>
 
+            </div>
             <CreateSwarmModal isOpen={isCreateModalOpen} setIsOpen={setIsCreateModalOpen} onCreate={handleCreate} />
             <AddDroneToSwarmModal
                 isOpen={isAddDroneModalOpen}
