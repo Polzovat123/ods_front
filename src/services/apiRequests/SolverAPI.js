@@ -10,15 +10,16 @@ export const searchTrajectory = async (requestData) => {
     return baseApi.post('/search_trajectory', requestData);
 };
 
-export const searchTrajectoryWithFile = async (missionId, typeModel, file) => {
-    const formData = new FormData();
-    formData.append('mission_id', missionId);
-    formData.append('type_model', typeModel);
-    formData.append('file_bytes', file);
-
-    return baseApi.post('/search_trajectory/use_file', formData, {
+export const searchTrajectoryWithFile = (missionId, typeModel, formData) => {
+    const url = `/planning/search_trajectory/use_file`;
+    return axios.post(url, formData, {
         headers: {
-            'Content-Type': 'multipart/form-data',
-        },
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(response => response.data)
+    .catch(error => {
+        console.error('Error searching trajectory:', error);
+        throw error;
     });
 };

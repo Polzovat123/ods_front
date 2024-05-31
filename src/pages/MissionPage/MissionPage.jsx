@@ -1,21 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { getAllMissions, createMission, startMission } from "../../services/apiRequests/MissionAPI";
-import { searchTrajectory, searchTrajectoryWithFile } from "../../services/apiRequests/SolverAPI";
+import { searchTrajectoryWithFile } from "../../services/apiRequests/SolverAPI";
 import { getSwarmsList } from "../../services/apiRequests/SwarmAPI";
 import CardMission from '../../components/CardMission/CardMission';
 import styles from './MissionPage.module.scss';
-import { Button } from "antd";
+import { Button, Upload, message } from "antd";
 import CreateMissionModal from "../../components/CreateMissionModal/CreateMissionModal";
 
 export const MissionPage = () => {
     const [missions, setMissions] = useState([]);
     const [swarms, setSwarms] = useState([]);
     const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+    const [selectedFiles, setSelectedFiles] = useState({});
 
     useEffect(() => {
         getAllMissions()
             .then(response => {
-                setMissions(response.missions); // Access the missions array from the response object
+                setMissions(response.missions);
             })
             .catch(console.error);
 
@@ -30,7 +31,7 @@ export const MissionPage = () => {
         const missionData = {
             ...newMission,
             time_create: new Date().toISOString(),
-            status: "на задании" // Default status or adjust as necessary
+            status: "на задании"
         };
 
         createMission(missionData)
@@ -41,9 +42,19 @@ export const MissionPage = () => {
             .catch(console.error);
     };
 
-    const handlePathFind = (swarmId) => {
-        // Call the appropriate function based on your logic
-        searchTrajectory(swarmId)
+    const handlePathFind = (missionId) => {
+        const file = selectedFiles[missionId];
+        if (!file) {
+            message.error('Please select a file before searching the trajectory.');
+            return;
+        }
+    
+        const formData = new FormData();
+        formData.append("file_bytes", file);
+    
+        const typeModel = "mda"; // Adjust as necessary
+    
+        searchTrajectoryWithFile(missionId, typeModel, formData)
             .then(response => {
                 console.log("Path found:", response);
             })
@@ -58,6 +69,13 @@ export const MissionPage = () => {
             .catch(console.error);
     };
 
+    const handleFileChange = (missionId, file) => {
+        setSelectedFiles(prevFiles => ({
+            ...prevFiles,
+            [missionId]: file
+        }));
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapper__list}>
@@ -65,8 +83,9 @@ export const MissionPage = () => {
                     <CardMission 
                         key={mission.id} 
                         params={mission} 
-                        onFind={() => handlePathFind(mission.id_swarm_uses)} 
-                        onStart={() => handleStartMission(mission.id)} 
+                        onFind={() => handlePathFind(mission.id)}
+                        onStart={() => handleStartMission(mission.id)}
+                        onFileChange={(file) => handleFileChange(mission.id, file)}
                     />
                 ))}
             </div>

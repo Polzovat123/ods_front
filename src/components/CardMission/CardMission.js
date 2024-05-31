@@ -1,25 +1,28 @@
-import React from "react";
-import { Card as AntCard, Button } from "antd";
-import "../../pages/MissionPage/MissionPage.module.scss"
+import React from 'react';
+import { Button, Upload, message } from 'antd';
 
-
-const CardMission = ({ params, onFind, onStart }) => {
-    const props = Object.entries(params).map(([key, value]) => (
-        <div key={key}>
-            <p><strong>{key}:</strong> {Array.isArray(value) ? value.join(', ') : value}</p>
-        </div>
-    ));
+const CardMission = ({ params, onFind, onStart, onFileChange }) => {
+    const beforeUpload = (file) => {
+        onFileChange(file);
+        return false;
+    };
 
     return (
-        <AntCard title={`Mission ID: ${params.id}`} bordered={false} style={{ width: 300 }}>
-            {props}
-            <Button onClick={onFind} type="primary" danger>
-                Path Compute
-            </Button>
-            <Button onClick={onStart} type="primary" danger>
-                Start Mission
-            </Button>
-        </AntCard>
+        <div>
+            <div>
+                <h3>Mission ID: {params.id}</h3>
+                <p>id: {params.id}</p>
+                <p>time_create: {params.time_create}</p>
+                <p>id_swarm_uses: {params.id_swarm_uses}</p>
+                <p>targets: {params.targets}</p>
+                <p>status: {params.status}</p>
+                <Upload beforeUpload={beforeUpload}>
+                    <Button>Select File</Button>
+                </Upload>
+                <Button onClick={onFind}>Path Compute</Button>
+                <Button onClick={onStart}>Start Mission</Button>
+            </div>
+        </div>
     );
 };
 
