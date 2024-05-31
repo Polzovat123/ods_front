@@ -14,18 +14,25 @@ export const MissionPage = () => {
     const [selectedFiles, setSelectedFiles] = useState({});
 
     useEffect(() => {
+        fetchMissions();
+        fetchSwarms();
+    }, []);
+
+    const fetchMissions = () => {
         getAllMissions()
             .then(response => {
                 setMissions(response.missions);
             })
             .catch(console.error);
+    };
 
+    const fetchSwarms = () => {
         getSwarmsList()
             .then(swarmsList => {
                 setSwarms(swarmsList);
             })
             .catch(console.error);
-    }, []);
+    };
 
     const handleCreate = (newMission) => {
         const missionData = {
@@ -46,7 +53,7 @@ export const MissionPage = () => {
         const file = selectedFiles[missionId];
         if (!file) {
             message.error('Please select a file before searching the trajectory.');
-            return;
+            return Promise.reject();
         }
     
         const formData = new FormData();
@@ -54,19 +61,25 @@ export const MissionPage = () => {
     
         const typeModel = "mda"; // Adjust as necessary
     
-        searchTrajectoryWithFile(missionId, typeModel, formData)
-            .then(response => {
-                console.log("Path found:", response);
+        return searchTrajectoryWithFile(missionId, typeModel, formData)
+            .then(() => {
+                message.success('Path computed successfully');
+                fetchMissions(); // Re-fetch missions to update status
             })
-            .catch(console.error);
+            .catch(() => {
+                message.error('Failed to compute path');
+            });
     };
 
     const handleStartMission = (missionId) => {
-        startMission(missionId)
-            .then(response => {
-                console.log("Mission started:", response);
+        return startMission(missionId)
+            .then(() => {
+                message.success('Mission started successfully');
+                fetchMissions(); // Re-fetch missions to update status
             })
-            .catch(console.error);
+            .catch(() => {
+                message.error('Failed to start mission');
+            });
     };
 
     const handleFileChange = (missionId, file) => {

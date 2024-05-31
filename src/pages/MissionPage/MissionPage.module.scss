@@ -58,3 +58,26 @@
 .mission-button:active {
     background-color: gray; /* Серый цвет при нажатии */
 }
+
+.mission {
+    border: 1px solid #ddd;
+    padding: 16px;
+    margin: 8px;
+    border-radius: 8px;
+}
+
+.mission__status-setup {
+    background-color: #e0ffe0; // light green for setup
+}
+
+.mission__status-waiting {
+    background-color: #fff4e0; // light yellow for waiting
+}
+
+.mission__status-on-mission {
+    background-color: #ffe0e0; // light red for on mission
+}
+
+.mission__buttons {
+    margin-top: 8px;
+}
