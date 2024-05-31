@@ -1,20 +1,19 @@
 .wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-.wrapper__list {
-display: flex;
-flex-direction: row;
-overflow-x: auto;
-padding: 20px;
-gap: 10px;
+    padding: 20px;
+
+    &__list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
+    }
+
+    &__add {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+    }
 }
 
-.wrapper__add {
-margin: 20px 0;
-}
 .missions-container {
     display: flex;
     flex-direction: row;
@@ -39,4 +38,23 @@ margin: 20px 0;
     bottom: 20px;
     right: 20px;
     z-index: 1000;
+}
+
+.mission-button {
+    background-color: green; /* Зеленый цвет кнопки */
+    color: white; /* Белый цвет текста */
+    border: none; /* Без рамки */
+    padding: 10px 20px; /* Отступы */
+    text-align: center; /* Выравнивание текста */
+    text-decoration: none; /* Без подчеркивания текста */
+    display: inline-block; /* Инлайн-блок */
+    font-size: 16px; /* Размер шрифта */
+    margin: 4px 2px; /* Отступы вокруг кнопки */
+    cursor: pointer; /* Курсор указателя при наведении */
+    border-radius: 4px; /* Сглаженные углы */
+    transition: background-color 0.3s ease; /* Плавный переход цвета */
+}
+
+.mission-button:active {
+    background-color: gray; /* Серый цвет при нажатии */
 }

@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { getAllMissions, createMission } from "../../services/apiRequests/MissionAPI";
+import { getAllMissions, createMission, startMission } from "../../services/apiRequests/MissionAPI";
+import { searchTrajectory, searchTrajectoryWithFile } from "../../services/apiRequests/SolverAPI";
 import { getSwarmsList } from "../../services/apiRequests/SwarmAPI";
-import Card from '../../components/Cards/Card_mission';
+import CardMission from '../../components/CardMission/CardMission';
 import styles from './MissionPage.module.scss';
 import { Button } from "antd";
 import CreateMissionModal from "../../components/CreateMissionModal/CreateMissionModal";
@@ -40,11 +41,33 @@ export const MissionPage = () => {
             .catch(console.error);
     };
 
+    const handlePathFind = (swarmId) => {
+        // Call the appropriate function based on your logic
+        searchTrajectory(swarmId)
+            .then(response => {
+                console.log("Path found:", response);
+            })
+            .catch(console.error);
+    };
+
+    const handleStartMission = (missionId) => {
+        startMission(missionId)
+            .then(response => {
+                console.log("Mission started:", response);
+            })
+            .catch(console.error);
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapper__list}>
                 {missions.map(mission => (
-                    <Card key={mission.id} params={mission} title={`Mission ID: ${mission.id}`} />
+                    <CardMission 
+                        key={mission.id} 
+                        params={mission} 
+                        onFind={() => handlePathFind(mission.id_swarm_uses)} 
+                        onStart={() => handleStartMission(mission.id)} 
+                    />
                 ))}
             </div>
             <Button
