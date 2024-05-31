@@ -9,6 +9,10 @@ export const getAllDrones = async () => {
     return baseApi.get(`all_drones`).then(res => res.data);
 };
 
+export const getAllFreeDrones = async () => {
+    return baseApi.get(`free_drones`).then(res => res.data);
+};
+
 export const setDronInfo = async () => {
     return baseApi.get(`info`);
 };

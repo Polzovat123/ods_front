@@ -1,15 +1,15 @@
 .wrapper {
-    width: 100%;
+    padding: 20px;
 
     &__list {
-        display: flex;
-        gap: 10px;
-        overflow-x: scroll;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
     }
 
     &__add {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
     }
 }
