@@ -4,7 +4,7 @@ import { searchTrajectoryWithFile } from "../../services/apiRequests/SolverAPI";
 import { getSwarmsList } from "../../services/apiRequests/SwarmAPI";
 import CardMission from '../../components/CardMission/CardMission';
 import styles from './MissionPage.module.scss';
-import { Button, Upload, message } from "antd";
+import { Button, message } from "antd";
 import CreateMissionModal from "../../components/CreateMissionModal/CreateMissionModal";
 
 export const MissionPage = () => {

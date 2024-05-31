@@ -45,9 +45,9 @@ export const checkMissionStatus = async (missionId) => {
     }
 };
 
-export const startMission = async (trajectoryInput) => {
+export const startMission = async (missionId) => {
     try {
-        const response = await baseApi.post("/start_mission", trajectoryInput);
+        const response = await baseApi.post("/start_mission", { mission_id: missionId });
         return response.data;
     } catch (error) {
         throw new Error(`Failed to start mission: ${error.response ? error.response.data.detail : error.message}`);

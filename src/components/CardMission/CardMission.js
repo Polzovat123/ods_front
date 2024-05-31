@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Upload, message } from 'antd';
+import { Button, Upload } from 'antd';
 
 const CardMission = ({ params, onFind, onStart, onFileChange }) => {
     const beforeUpload = (file) => {
