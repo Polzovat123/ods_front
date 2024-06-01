@@ -27,9 +27,16 @@ const Tracker = () => {
 
     return (
         <div className={styles.wrapper}>
-            {
-                onMissions.map(onMission => <CardTracker swarm_name={onMission.swarm_name} time_start={onMission.time_start} time_finish={onMission.time_finish}/>)
-            }
+            {onMissions.map((onMission, index) => (
+                <CardTracker 
+                    key={onMission.mission_id}
+                    mission_id={onMission.mission_id}
+                    swarm_name={onMission.swarm_name}
+                    time_start={onMission.time_start}
+                    time_finish={onMission.time_finish}
+                    initialImageObj={onMissionsPict[index]}
+                />
+            ))}
         </div>
     );
 }

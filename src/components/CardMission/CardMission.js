@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Button, Upload, message } from 'antd';
 import styles from './CardMission.module.scss';
+import TrajectoryFormModal from '../TrajectoryFormModal/TrajectoryFormModal';
 
-const CardMission = ({ params, onFind, onStart, onFileChange }) => {
+const CardMission = ({ params, onFind, onStart, onFileChange, onCutGis }) => {
     const [isFileSelected, setIsFileSelected] = useState(false);
     const [isPathComputed, setIsPathComputed] = useState(false);
     const [isMissionStarted, setIsMissionStarted] = useState(false);
+    const [isModalVisible, setIsModalVisible] = useState(false);
 
     const beforeUpload = (file) => {
         onFileChange(file);
@@ -24,6 +26,21 @@ const CardMission = ({ params, onFind, onStart, onFileChange }) => {
         onStart()
             .then(() => {
                 setIsMissionStarted(true);
+            });
+    };
+
+    const handleCutGis = () => {
+        setIsModalVisible(true);
+    };
+
+    const handleModalSubmit = (formData) => {
+        onCutGis(params.id, formData)
+            .then(() => {
+                setIsModalVisible(false);
+                message.success('Trajectory generated successfully');
+            })
+            .catch(() => {
+                message.error('Failed to generate trajectory');
             });
     };
 
@@ -51,8 +68,12 @@ const CardMission = ({ params, onFind, onStart, onFileChange }) => {
 
             <div className={styles.mission__buttons}>
                 <Upload beforeUpload={beforeUpload} disabled={params.status !== 'настройка'}>
-                    <Button  type="primary" disabled={params.status !== 'настройка' || isFileSelected}>Select File</Button>
+                    <Button type="primary" disabled={params.status !== 'настройка' || isFileSelected}>Select File</Button>
                 </Upload>
+
+                <Button type="primary" onClick={handleCutGis} disabled={params.status !== 'настройка'}>
+                    Cut Gis
+                </Button>
 
                 <Button type="primary" onClick={handlePathFind} disabled={params.status !== 'настройка' || isPathComputed}>
                     Path Compute
@@ -61,8 +82,13 @@ const CardMission = ({ params, onFind, onStart, onFileChange }) => {
                 <Button type="primary" onClick={handleStartMission} disabled={params.status !== 'ожидание' || isMissionStarted}>
                     Start Mission
                 </Button>
-                <p></p>
             </div>
+
+            <TrajectoryFormModal
+                isVisible={isModalVisible}
+                onCancel={() => setIsModalVisible(false)}
+                onSubmit={handleModalSubmit}
+            />
         </div>
     );
 };
