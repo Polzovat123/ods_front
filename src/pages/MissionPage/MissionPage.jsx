@@ -6,6 +6,7 @@ import CardMission from '../../components/CardMission/CardMission';
 import styles from './MissionPage.module.scss';
 import { Button, message } from "antd";
 import CreateMissionModal from "../../components/CreateMissionModal/CreateMissionModal";
+import { generateTrajectory } from "../../services/apiRequests/DemoAPI";
 
 export const MissionPage = () => {
     const [missions, setMissions] = useState([]);
@@ -89,6 +90,18 @@ export const MissionPage = () => {
         }));
     };
 
+    const handleCutGis = (missionId, formData) => {
+        const { targets, ...missionData } = formData;
+        return generateTrajectory(targets, { ...missionData, mission_id: missionId })
+            .then(() => {
+                message.success('Trajectory generated successfully');
+                fetchMissions(); // Re-fetch missions to update status
+            })
+            .catch(() => {
+                message.error('Failed to generate trajectory');
+            });
+    };
+
     return (
         <div className={styles.wrapper}>
             <div className={styles.wrapper__list}>
@@ -99,6 +112,7 @@ export const MissionPage = () => {
                         onFind={() => handlePathFind(mission.id)}
                         onStart={() => handleStartMission(mission.id)}
                         onFileChange={(file) => handleFileChange(mission.id, file)}
+                        onCutGis={(formData) => handleCutGis(mission.id, formData)}
                     />
                 ))}
             </div>

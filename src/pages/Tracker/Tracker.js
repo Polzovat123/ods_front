@@ -27,7 +27,7 @@ const Tracker = () => {
     }, []);
 
     return (
-        <div className={styles.wrapper}>
+        <div className={styles.fileStorage}>
             {onMissions.map((onMission, index) => (
                 <CardTracker 
                     key={onMission.mission_id}
