@@ -5,6 +5,8 @@ const baseApi = axios.create({
 });
 
 export const generateTrajectory = async (targets, missionData) => {
+    console.log(targets);
+    console.log(missionData)
     try {
         const response = await baseApi.post(`generate_trajectory`, missionData, {
             params: { targets },

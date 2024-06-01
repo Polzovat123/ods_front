@@ -33,8 +33,19 @@ const CardMission = ({ params, onFind, onStart, onFileChange, onCutGis }) => {
         setIsModalVisible(true);
     };
 
-    const handleModalSubmit = (formData) => {
-        onCutGis(params.id, formData)
+    const handleModalSubmit = (targets, formData) => {
+        console.log(params.id);
+        console.log(targets);
+
+        console.log(formData)
+        console.log('ХУЙНЯ');
+        onCutGis(
+            targets, 
+            {
+                mission_id: params.id,
+                ...formData
+            }
+        )
             .then(() => {
                 setIsModalVisible(false);
                 message.success('Trajectory generated successfully');

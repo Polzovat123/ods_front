@@ -90,9 +90,12 @@ export const MissionPage = () => {
         }));
     };
 
-    const handleCutGis = (missionId, formData) => {
-        const { targets, ...missionData } = formData;
-        return generateTrajectory(targets, { ...missionData, mission_id: missionId })
+    const handleCutGis = (target, formData) => {
+        console.log('________________')
+        console.log(formData)
+        console.log('________________')
+
+        return generateTrajectory(target, formData)
             .then(() => {
                 message.success('Trajectory generated successfully');
                 fetchMissions(); // Re-fetch missions to update status
@@ -112,7 +115,7 @@ export const MissionPage = () => {
                         onFind={() => handlePathFind(mission.id)}
                         onStart={() => handleStartMission(mission.id)}
                         onFileChange={(file) => handleFileChange(mission.id, file)}
-                        onCutGis={(formData) => handleCutGis(mission.id, formData)}
+                        onCutGis={(target, formData) => handleCutGis(target, formData)}
                     />
                 ))}
             </div>

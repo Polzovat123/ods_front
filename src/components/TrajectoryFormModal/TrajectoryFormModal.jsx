@@ -7,7 +7,15 @@ const TrajectoryFormModal = ({ isVisible, onCancel, onSubmit }) => {
 
     const handleSubmit = () => {
         form.validateFields().then(values => {
-            onSubmit(values);
+            // console.log()
+            const details = Object.keys(values).filter(objKey =>
+                objKey !== 'targets').reduce((newObj, key) =>
+                {
+                    newObj[key] = values[key];
+                    return newObj;
+                }, {}
+            )
+            onSubmit(values.targets, details);
             form.resetFields();
         });
     };
