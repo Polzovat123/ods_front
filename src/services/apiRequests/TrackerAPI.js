@@ -14,9 +14,27 @@ export const getPercentComplete = async (mission_id) => {
 };
 
 export const getStartMap = async (mission_id, height, width) => {
-    return baseApi.get(`frame/info_state`, { params: { mission_id, height, width } }).then(res => res.data);
+    try {
+        const response = await baseApi.get(`frame/info_state`, {
+            params: { mission_id, height, width },
+            responseType: 'blob' 
+        });
+        return response.data; 
+    } catch (error) {
+        console.error("Error fetching image:", error);
+        throw error;
+    }
 };
 
 export const getCurrentMap = async (mission_id, height, width) => {
-    return baseApi.get(`frame/current_position`, { params: { mission_id, height, width } }).then(res => res.data);
+    try {
+        const response = await baseApi.get(`frame/current_position`, {
+            params: { mission_id, height, width },
+            responseType: 'blob' 
+        });
+        return response.data;
+    } catch (error) {
+        console.error("Error fetching current map:", error);
+        throw error;
+    }
 };
