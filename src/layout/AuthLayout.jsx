@@ -8,6 +8,7 @@ import { SwarmPage } from "../pages/SwarmPage/SwarmPage";
 import { FileStorage } from "../pages/FileStorage/FileStorage";
 import { MissionPage} from "../pages/MissionPage/MissionPage"
 import Tracker from "../pages/Tracker/Tracker";
+import { LogFilesPage } from "../pages/LogFilePage/LogFilePage";
 
 export const AuthLayout = () => {
     const navigate = useNavigate()
@@ -34,7 +35,7 @@ export const AuthLayout = () => {
                 <Route path='/main/missions' element={<MissionPage />}/>
                 <Route path='/main/tracker' element={<Tracker />}/>
                 <Route path='/main/file_storage' element={<FileStorage />}/>
-                
+                <Route path='/main/logs' element={<LogFilesPage />}/>
             </Route>
 
             <Route path="*" element={<Navigate to='/login'/>}/>

@@ -30,6 +30,17 @@ export const Menu = () => {
                         FileStorage
                     </Button>
                 </Link>
+                <Link to='/main/logs'>
+                    <Button type="primary" className={styles.wrapper__button}>
+                        Logs Missions
+                    </Button>
+                </Link>
+
+                <Link to='/login'>
+                    <Button type="primary" className={styles.wrapper__button}>
+                        Logout
+                    </Button>
+                </Link>
                 <p></p>
             </div>
     )
